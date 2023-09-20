@@ -36,8 +36,21 @@ export default function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    navigate('/Dashboard');
+    var firstName =  data.get('firstName');
+    var lastName =  data.get('lastName');
+    var email =  data.get('email');
+    var password =  data.get('password');
+    localStorage.setItem("FirstName", firstName);
+    localStorage.setItem("LastName", lastName);
+    localStorage.setItem("Email", email);
+    localStorage.setItem("Password", password);
+    if (firstName !== "" && lastName !== "" && email !== "" && password !== "")
+    {
+      navigate('/Dashboard');
+    }
     console.log({
+      firstName: data.get('firstName'),
+      lastName: data.get('lastName'),
       email: data.get('email'),
       password: data.get('password'),
     });

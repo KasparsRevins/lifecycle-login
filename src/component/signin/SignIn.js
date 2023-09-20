@@ -36,7 +36,13 @@ export default function SignIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    navigate('/Dashboard');
+    var email =  data.get('email');
+    var password =  data.get('password');
+    if ( email == localStorage.getItem("Email") && password == localStorage.getItem("Password") ) {
+      navigate('/Dashboard');
+    } else {
+      navigate('/SignIn')
+    }
     console.log({
       email: data.get('email'),
       password: data.get('password'),
